@@ -1,0 +1,110 @@
+:root{
+    --clr-neutrel-900:hsl(207,19%,9%);
+    --clr-neutrel-100:hsl(0,0%,100%);
+    --clr-acsent-400:hsl(142,90%,61%);
+}
+
+*,*::before,*::after{
+    box-sizing: border-box;
+}
+
+body{
+    display: grid;
+    min-height: 100vh;
+    place-items: center;
+    line-height: 1.6;
+    background:  var(--clr-neutrel-900);
+}
+.card{
+    color: var(--clr-neutrel-100);
+    font-family: sans-serif;
+    background-image: url(https://i.pinimg.com/564x/8a/31/90/8a319065d5c0eccc26ae5030291f970b.jpg);
+    background-size: cover;
+    padding: 10rem 0 0 ;
+    width: 35ch;
+    border-radius: .7rem;
+    overflow: hidden;
+
+    transition: transform 500ms ease;
+}
+
+.card:hover , .card:focus-within{
+    transform: scale(1.05);
+}
+
+.card-content{
+    --pading:1.5rem;
+    padding: var(--pading);
+    background:linear-gradient(
+        hsl(0 0% 0% /0),
+        hsl(0 0% 0% /0.4) 10%,
+        hsl(0 0% 0% /1)
+    );
+    transform: translateY(65%);
+    transition: transform 500ms ease-out;
+}
+
+.card-title{
+    position: relative;
+    width: max-content;
+    
+}
+.card-title::after {
+    content: '';
+    position: absolute;
+    height: 4px;
+    background-color: var(--clr-acsent-400);
+    width: calc(100% + var(--pading));
+    left: calc(var(--pading)*-1);
+    bottom: -3px;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 500ms ease;
+}
+
+.card:hover .card-content, 
+.card:focus-within .card-content {
+    transform: translateY(0);
+    transition-delay: 200ms;
+}
+
+.card:focus-within .card-content{
+    transition-duration:0ms ;
+}
+
+.card-content > *:not(.card-title) {
+    opacity: 0;
+    transition: opacity 500ms linear;
+
+}
+
+.card:hover .card-content > *:not(.card-title),
+.card:focus-within .card-content > *:not(.card-title) {
+    opacity: 1;
+    transition-delay: 600ms;
+}
+
+.card:hover .card-title::after,
+.card:focus-within .card-title::after {
+   
+    transform: scaleX(1);
+    
+}
+
+.card-body{
+color: rgba(255, 255, 255, 0.8);
+}
+
+.btn{
+    cursor: pointer;
+    display: inline-block;
+    text-decoration: none;
+    color: var(--clr-neutrel-900);
+    background-color: var(--clr-acsent-400);
+    padding: .4em 1.2em;
+    border-radius: .25em;
+}
+.btn:hover,
+.btn:focus{
+    background-color: var(--clr-neutrel-100);
+}
